@@ -1,5 +1,9 @@
 import { Exercicio } from '../types'
 
+/**
+ * Mock data for exercises.
+ * Contains a predefined list of exercises with details like muscle group and difficulty.
+ */
 export const mockExercicios: Exercicio[] = [
   // Pernas
   {
@@ -153,4 +157,3 @@ export const mockExercicios: Exercicio[] = [
     dificuldade: 'intermediario',
   },
 ]
-

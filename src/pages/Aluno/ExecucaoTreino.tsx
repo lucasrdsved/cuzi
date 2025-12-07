@@ -6,6 +6,12 @@ import { Treino, ExecucaoExercicio } from '../../types'
 import { Check, ArrowLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+/**
+ * The Workout Execution page component.
+ * Guides the student through a workout session, tracking sets, rest times, and progress.
+ *
+ * @returns The rendered Workout Execution page.
+ */
 export default function ExecucaoTreino() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
@@ -261,4 +267,3 @@ export default function ExecucaoTreino() {
     </div>
   )
 }
-

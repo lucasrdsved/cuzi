@@ -1,6 +1,10 @@
 import { Treino } from '../types'
 import { mockExercicios } from './exercicios'
 
+/**
+ * Mock data for workout routines (Treinos).
+ * Contains detailed workout plans with exercises, sets, and reps.
+ */
 export const mockTreinos: Treino[] = [
   {
     id: 'treino-1',
@@ -201,4 +205,3 @@ export const mockTreinos: Treino[] = [
     ativo: true,
   },
 ]
-

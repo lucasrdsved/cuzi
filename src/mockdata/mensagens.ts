@@ -1,5 +1,9 @@
 import { Mensagem } from '../types'
 
+/**
+ * Mock data for chat messages.
+ * Simulates conversation history between users.
+ */
 export const mockMensagens: Mensagem[] = [
   {
     id: 'msg-1',
@@ -29,4 +33,3 @@ export const mockMensagens: Mensagem[] = [
     lida: false,
   },
 ]
-

@@ -1,5 +1,9 @@
 import { User } from '../types'
 
+/**
+ * Mock data for system users (authentication context).
+ * Contains user records for testing login and role-based access.
+ */
 export const mockUsers: User[] = [
   {
     id: 'personal-1',

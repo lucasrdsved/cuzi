@@ -1,16 +1,33 @@
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 
+/**
+ * Props for the Button component.
+ */
 interface ButtonProps {
+  /** The content to display inside the button (text or elements). */
   children: ReactNode
+  /** Optional click handler function. */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void
+  /** The visual style variant of the button. Defaults to 'primary'. */
   variant?: 'primary' | 'secondary' | 'success' | 'danger'
+  /** The size of the button. Defaults to 'md'. */
   size?: 'sm' | 'md' | 'lg'
+  /** Whether the button is disabled. Defaults to false. */
   disabled?: boolean
+  /** The HTML button type attribute. Defaults to 'button'. */
   type?: 'button' | 'submit' | 'reset'
+  /** Additional CSS classes to apply to the button. */
   className?: string
 }
 
+/**
+ * A reusable button component with brutalist design styles and animations.
+ * Supports multiple variants, sizes, and states.
+ *
+ * @param props - The properties for the button.
+ * @returns A styled motion.button element.
+ */
 export default function Button({
   children,
   onClick,
@@ -53,4 +70,3 @@ export default function Button({
     </motion.button>
   )
 }
-
