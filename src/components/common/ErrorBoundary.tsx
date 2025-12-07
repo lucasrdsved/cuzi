@@ -10,13 +10,13 @@ interface State {
 }
 
 export default class ErrorBoundary extends Component<Props, State> {
-  state = { hasError: false }
+  override state = { hasError: false }
 
   static getDerivedStateFromError() {
     return { hasError: true }
   }
 
-  render() {
+  override render() {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen bg-brutal-white flex items-center justify-center p-6">
