@@ -1,5 +1,9 @@
 import { ExecucaoTreino } from '../types'
 
+/**
+ * Mock data for workout executions.
+ * Contains records of completed workouts by students.
+ */
 export const mockExecucoes: ExecucaoTreino[] = [
   {
     id: 'exec-1',
@@ -43,4 +47,3 @@ export const mockExecucoes: ExecucaoTreino[] = [
     duracaoTotal: 40,
   },
 ]
-

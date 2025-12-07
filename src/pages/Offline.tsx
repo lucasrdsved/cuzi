@@ -1,3 +1,10 @@
+/**
+ * Offline page component.
+ * Displayed when the application detects no internet connection.
+ * Provides a button to retry the connection (reload the page).
+ *
+ * @returns The Offline page UI.
+ */
 export default function Offline() {
   return (
     <div className="min-h-screen bg-brutal-white flex items-center justify-center p-6">

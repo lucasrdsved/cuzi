@@ -1,10 +1,23 @@
 import { forwardRef, InputHTMLAttributes } from 'react'
 
+/**
+ * Props for the Input component.
+ * Extends standard HTML input attributes.
+ */
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  /** Optional label text to display above the input. */
   label?: string
+  /** Optional error message to display below the input. */
   error?: string
 }
 
+/**
+ * A custom input component with label and error handling support, styled with brutalist design.
+ *
+ * @param props - The properties for the input.
+ * @param ref - The ref forwarded to the underlying input element.
+ * @returns A container div with label, input, and error message.
+ */
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, className = '', ...props }, ref) => {
     return (
@@ -32,4 +45,3 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = 'Input'
 
 export default Input
-

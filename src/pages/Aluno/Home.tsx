@@ -6,6 +6,12 @@ import { getTreinosByAluno } from '../../services/mockService'
 import { Treino } from '../../types'
 import { Calendar, TrendingUp, MessageSquare, Play } from 'lucide-react'
 
+/**
+ * Student Home Page (Dashboard).
+ * Displays the current workout (Treino do Dia), quick statistics, and quick actions.
+ *
+ * @returns The Aluno Home page UI.
+ */
 export default function AlunoHome() {
   const { user, logout } = useAuthStore()
   const navigate = useNavigate()
