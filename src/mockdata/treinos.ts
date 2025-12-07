@@ -1,0 +1,92 @@
+import { Treino } from '../types'
+import { mockExercicios } from './exercicios'
+
+export const mockTreinos: Treino[] = [
+  {
+    id: 'treino-1',
+    personalId: 'personal-1',
+    alunoId: 'aluno-1',
+    nome: 'Treino A - Peito e Tríceps',
+    descricao: 'Treino focado em desenvolvimento de peitoral e tríceps',
+    exercicios: [
+      {
+        id: 'te-1',
+        exercicioId: 'ex-2',
+        exercicio: mockExercicios[1],
+        series: 4,
+        repeticoes: 10,
+        carga: 60,
+        descanso: 90,
+        ordem: 1,
+      },
+      {
+        id: 'te-2',
+        exercicioId: 'ex-7',
+        exercicio: mockExercicios[6],
+        series: 3,
+        repeticoes: 12,
+        carga: 25,
+        descanso: 60,
+        ordem: 2,
+      },
+    ],
+    dataCriacao: '2024-01-20T10:00:00Z',
+    dataAtribuicao: '2024-01-21T10:00:00Z',
+    ativo: true,
+  },
+  {
+    id: 'treino-2',
+    personalId: 'personal-1',
+    alunoId: 'aluno-1',
+    nome: 'Treino B - Pernas',
+    descricao: 'Treino completo para pernas',
+    exercicios: [
+      {
+        id: 'te-3',
+        exercicioId: 'ex-1',
+        exercicio: mockExercicios[0],
+        series: 4,
+        repeticoes: 12,
+        carga: 0,
+        descanso: 90,
+        ordem: 1,
+      },
+      {
+        id: 'te-4',
+        exercicioId: 'ex-5',
+        exercicio: mockExercicios[4],
+        series: 3,
+        repeticoes: 15,
+        carga: 100,
+        descanso: 60,
+        ordem: 2,
+      },
+    ],
+    dataCriacao: '2024-01-22T10:00:00Z',
+    dataAtribuicao: '2024-01-23T10:00:00Z',
+    ativo: true,
+  },
+  {
+    id: 'treino-3',
+    personalId: 'personal-1',
+    alunoId: 'aluno-2',
+    nome: 'Treino Cardio e Abdominais',
+    descricao: 'Treino focado em queima de gordura',
+    exercicios: [
+      {
+        id: 'te-5',
+        exercicioId: 'ex-8',
+        exercicio: mockExercicios[7],
+        series: 3,
+        repeticoes: 20,
+        carga: 0,
+        descanso: 30,
+        ordem: 1,
+      },
+    ],
+    dataCriacao: '2024-01-25T10:00:00Z',
+    dataAtribuicao: '2024-01-26T10:00:00Z',
+    ativo: true,
+  },
+]
+

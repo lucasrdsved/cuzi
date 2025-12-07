@@ -1,0 +1,423 @@
+# PWA Personal & Aluno - Regras e Comandos do Projeto
+
+## 🎯 Visão Geral
+PWA completo e moderno que conecta personal trainers e alunos, com design brutalista, foco em mockdata/frontend primeiro, deploy na Vercel.
+
+## 📋 Stack Tecnológica
+
+### Frontend
+- React 18 + Vite + TypeScript
+- Tailwind CSS (design brutalista)
+- React Router v6
+- Zustand (estado)
+- Framer Motion (animações duras)
+- Recharts (gráficos brutalistas)
+- React Hook Form + Zod
+- Lucide React (ícones)
+
+### PWA
+- vite-plugin-pwa (plugin oficial)
+- Workbox (service worker)
+- IndexedDB (armazenamento offline)
+
+### Deploy
+- Vercel (deploy direto, sem GitHub Actions)
+
+### Backend (Fase 2)
+- Supabase (PostgreSQL + Auth + Storage + Realtime)
+
+## 🎨 Design Brutalista - Regras
+
+### Cores
+- Base: Preto (#000) e Branco (#FFF)
+- Acentos: Verde (#00FF00), Laranja (#FF6600), Vermelho (#FF0000)
+- SEM gradientes, apenas cores sólidas
+
+### Bordas
+- Espessura: 4-8px
+- Cor: Sempre preta ou cores sólidas
+- Border-radius: 0-4px (mínimo)
+
+### Tipografia
+- Fontes: Extra-bold (900 weight)
+- Tamanhos: Grandes e contrastantes
+- Sem serifas
+
+### Layout
+- Grids rígidos
+- Alinhamentos fortes
+- SEM elementos flutuantes
+- Espaçamentos: múltiplos de 8px ou 16px
+
+### Animações
+- Transições duras (linear, sem easing suave)
+- Feedback visual forte
+- Microinterações diretas
+
+### Acessibilidade
+- Alto contraste sempre
+- ARIA labels completos
+- Navegação por teclado
+
+## 📁 Estrutura de Pastas
+
+```
+cuzi/
+├── public/
+│   ├── icons/ (PWA icons)
+├── src/
+│   ├── components/
+│   │   ├── common/ (Button, Input, Card, Modal)
+│   │   ├── personal/ (Dashboard, Alunos, Treinos)
+│   │   ├── aluno/ (TreinoDoDia, ExecucaoTreino)
+│   │   └── shared/ (Chat, Graficos)
+│   ├── pages/
+│   │   ├── Login.tsx (dois botões grandes)
+│   │   ├── Personal/ (Dashboard, Alunos, Treinos)
+│   │   └── Aluno/ (Home, Treino, Progresso)
+│   ├── hooks/
+│   ├── store/ (Zustand stores)
+│   ├── mockdata/
+│   │   ├── users.ts
+│   │   ├── alunos.ts
+│   │   ├── treinos.ts
+│   │   ├── exercicios.ts
+│   │   ├── execucoes.ts
+│   │   └── mensagens.ts
+│   ├── services/
+│   │   ├── mockService.ts
+│   │   ├── db.ts (IndexedDB)
+│   │   ├── supabase.ts (fase 2)
+│   │   ├── auth.ts
+│   │   ├── notifications.ts
+│   │   └── offline.ts
+│   ├── types/
+│   ├── utils/
+│   ├── App.tsx
+│   └── main.tsx
+├── .cursorrules (este arquivo)
+├── vite.config.ts
+├── tailwind.config.js
+├── vercel.json
+└── package.json
+```
+
+## 🔧 Comandos Úteis
+
+### Desenvolvimento
+```bash
+# Instalar dependências
+npm install
+
+# Desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
+
+# Preview do build
+npm run preview
+
+# Lint
+npm run lint
+
+# Type check
+npm run type-check
+```
+
+### PWA
+```bash
+# Testar PWA localmente (build necessário)
+npm run build && npm run preview
+
+# Verificar service worker
+# Abrir DevTools > Application > Service Workers
+```
+
+### Deploy
+```bash
+# Deploy na Vercel
+vercel
+
+# Deploy em produção
+vercel --prod
+```
+
+## 🛠️ Uso de Servidores MCP
+
+### Sempre usar servidores MCP quando disponíveis:
+
+#### 1. Ref (Documentação)
+- **Quando usar**: Buscar documentação de bibliotecas, frameworks, APIs
+- **Comando**: `ref_search_documentation` + `ref_read_url`
+- **Exemplos**:
+  - Documentação do React, Vite, Tailwind
+  - APIs do Supabase
+  - Bibliotecas como Framer Motion, Recharts
+
+#### 2. GitHub
+- **Quando usar**: Buscar exemplos de código, issues, PRs
+- **Comandos**: `Github_search_code`, `Github_search_repositories`
+- **Exemplos**:
+  - Exemplos de PWA com Vite
+  - Implementações de design brutalista
+  - Exemplos de apps fitness
+
+#### 3. Linkup (Busca Web)
+- **Quando usar**: Informações atualizadas, tendências, boas práticas
+- **Comando**: `linkup-search`
+- **Exemplos**:
+  - Melhores práticas PWA 2024
+  - Tendências de design brutalista
+  - Features de apps fitness
+
+#### 4. Perplexity (Busca Avançada)
+- **Quando usar**: Pesquisas complexas, análises
+- **Comando**: `Perplexity_Search_search`
+- **Exemplos**:
+  - Comparação de tecnologias
+  - Soluções para problemas específicos
+
+#### 5. Sequential Thinking
+- **Quando usar**: Problemas complexos que precisam de análise passo a passo
+- **Comando**: `sequentialthinking`
+- **Exemplos**:
+  - Arquitetura de features complexas
+  - Otimizações de performance
+  - Decisões de design
+
+## 📝 Regras de Código
+
+### TypeScript
+- Sempre tipar tudo
+- Usar interfaces para tipos complexos
+- Evitar `any`, usar `unknown` quando necessário
+
+### Componentes React
+- Componentes funcionais apenas
+- Hooks customizados para lógica reutilizável
+- Props tipadas com interfaces
+
+### Estilização
+- Tailwind CSS apenas (sem CSS modules ou styled-components)
+- Classes utilitárias do Tailwind
+- Design tokens no `tailwind.config.js`
+
+### Estado
+- Zustand para estado global
+- useState para estado local
+- Evitar prop drilling
+
+### Formulários
+- React Hook Form + Zod
+- Validação no cliente
+- Feedback visual brutalista
+
+### Animações
+- Framer Motion para animações
+- Transições duras (linear)
+- Feedback visual forte
+
+## 🎯 Fluxo de Trabalho
+
+### Fase 1: Frontend com Mockdata
+1. Setup do projeto
+2. Design system brutalista
+3. Mockdata completo
+4. Componentes base
+5. Páginas e funcionalidades
+6. PWA básico
+7. Deploy Vercel
+
+### Fase 2: Backend
+1. Setup Supabase
+2. Substituir mockdata
+3. Autenticação real
+4. Chat tempo real
+5. Notificações push
+6. PWA offline completo
+
+## 🚀 Boas Práticas
+
+### Performance
+- Code splitting (lazy loading)
+- Image optimization (WebP)
+- Bundle size < 200KB inicial
+- Lighthouse score 90+
+
+### PWA
+- vite-plugin-pwa (não configurar manualmente)
+- IndexedDB para dados offline
+- Background Sync
+- Service Worker com Workbox
+
+### Acessibilidade
+- ARIA labels completos
+- Navegação por teclado
+- Alto contraste
+- Screen reader friendly
+
+### SEO (futuro)
+- Meta tags
+- Open Graph
+- Structured data
+
+## 📚 Recursos Úteis
+
+### Documentação
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
+- [Supabase](https://supabase.com/docs)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [Framer Motion](https://www.framer.com/motion/)
+
+### Design Brutalista
+- [Brutalist Websites](https://brutalistwebsites.com/)
+- [Neo-Brutalism UI Library](https://neo-brutalism-ui-library.vercel.app/)
+
+## 🎨 Inspiração de Design (Adaptada para Brutalista)
+
+### Elementos Inspiradores das Referências
+
+#### 1. Dashboard/Home (App de Hábitos)
+**Inspiração:**
+- Dashboard com saudação personalizada ("Good Morning, Sarah 👋")
+- Cards de progresso com barras visuais
+- Lista de tarefas do dia com ações rápidas
+- Navegação inferior fixa
+
+**Adaptação Brutalista:**
+- Saudação em fonte extra-bold, borda preta grossa ao redor
+- Cards com bordas de 6-8px pretas, fundo branco
+- Barras de progresso com bordas grossas, cores sólidas (verde/laranja)
+- Botões "COMPLETE" com bordas grossas, sem border-radius
+- Navegação inferior com ícones grandes, bordas pretas
+
+#### 2. Criação de Hábitos (Grid de Opções)
+**Inspiração:**
+- Grid 2x3 de opções com ícones
+- Seleção visual clara
+- Tela de configuração de detalhes
+
+**Adaptação Brutalista:**
+- Grid rígido, sem espaçamentos suaves
+- Cards com bordas pretas de 6px
+- Ícones grandes e bold
+- Cores sólidas vibrantes (verde, laranja, vermelho)
+- Botões de ação com bordas grossas
+
+#### 3. Insights/Progresso (Gráficos)
+**Inspiração:**
+- Gráficos de barras semanais
+- Cards de resumo (streak, completed)
+- Lista de breakdown por hábito
+- Filtros (ALL TIME)
+
+**Adaptação Brutalista:**
+- Gráficos com barras grossas, bordas pretas
+- Cards com bordas de 8px, fundo branco
+- Números grandes e bold
+- Filtros como botões com bordas grossas
+- Sem sombras, apenas bordas sólidas
+
+#### 4. Player/Execução (App de Música)
+**Inspiração:**
+- Tela de execução com imagem grande central
+- Barra de progresso com tempo
+- Controles grandes e acessíveis
+- Informações do item atual
+
+**Adaptação Brutalista:**
+- Imagem com borda preta grossa (8px)
+- Barra de progresso com borda preta, preenchimento sólido
+- Botões de controle grandes, bordas grossas
+- Texto extra-bold, tamanhos grandes
+- Sem elementos flutuantes, tudo alinhado rigidamente
+
+### Padrões de Layout Inspirados
+
+#### Grid System
+- **Dashboard**: Grid 1 coluna no mobile, cards empilhados
+- **Seleção**: Grid 2x3 para opções (exercícios, hábitos)
+- **Listas**: Layout vertical rígido, sem espaçamentos suaves
+
+#### Navegação
+- **Bottom Nav**: Fixa, ícones grandes, bordas pretas
+- **Top Bar**: Simples, texto bold, sem decorações
+- **Breadcrumbs**: Setas grossas, texto bold
+
+#### Cards e Containers
+- **Progress Cards**: Bordas grossas, fundo branco, números grandes
+- **Task Cards**: Bordas pretas, botões de ação destacados
+- **Info Cards**: Grid rígido, sem sombras
+
+### Adaptações Brutalistas dos Elementos
+
+#### ❌ NÃO usar (das referências):
+- Bordas arredondadas suaves
+- Sombras suaves
+- Gradientes
+- Elementos flutuantes
+- Espaçamentos irregulares
+
+#### ✅ ADAPTAR para brutalista:
+- Bordas retas e grossas (4-8px)
+- Cores sólidas vibrantes
+- Tipografia extra-bold
+- Grids rígidos
+- Alto contraste
+- Espaçamentos múltiplos de 8px
+
+### Componentes Inspirados a Criar
+
+1. **ProgressCard**: Card de progresso com borda grossa, barra visual
+2. **TaskList**: Lista de tarefas com botões de ação destacados
+3. **OptionGrid**: Grid 2x3 de opções com ícones grandes
+4. **InsightsChart**: Gráficos com estilo brutalista
+5. **ExecutionScreen**: Tela de execução com controles grandes
+6. **BottomNav**: Navegação inferior fixa com bordas
+
+## ⚠️ Avisos Importantes
+
+1. **Sempre usar MCP**: Antes de implementar algo, buscar documentação/exemplos via MCP
+2. **Design Brutalista**: Manter consistência visual (bordas grossas, cores sólidas, sem sombras)
+3. **Mockdata Primeiro**: Desenvolver frontend completo com mockdata antes de integrar backend
+4. **PWA**: Usar vite-plugin-pwa, não configurar service worker manualmente
+5. **TypeScript**: Tipar tudo, evitar `any`
+6. **Performance**: Monitorar bundle size e Lighthouse score
+7. **Deploy**: Apenas Vercel (CLI ou interface web). NÃO usar GitHub Actions
+
+## 🔍 Checklist Antes de Commitar
+
+- [ ] TypeScript sem erros
+- [ ] Lint passando
+- [ ] Design brutalista consistente
+- [ ] Componentes tipados
+- [ ] Acessibilidade (ARIA labels)
+- [ ] Performance (bundle size)
+- [ ] PWA funcionando (se aplicável)
+
+## 📞 Comandos MCP Frequentes
+
+```typescript
+// Buscar documentação
+ref_search_documentation("React hooks best practices")
+ref_read_url(url)
+
+// Buscar código no GitHub
+Github_search_code("vite-plugin-pwa react example")
+
+// Buscar na web
+linkup-search("PWA offline strategies 2024")
+
+// Buscar repositórios
+Github_search_repositories("brutalist design react")
+```
+
+---
+
+**Última atualização**: 2025-01-27
+**Versão do plano**: 1.0
+

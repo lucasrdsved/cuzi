@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-brutal-black border-solid;
+  }
+  
+  body {
+    @apply bg-brutal-white text-brutal-black font-brutal;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-brutal;
+    font-weight: 900;
+  }
+}
+
