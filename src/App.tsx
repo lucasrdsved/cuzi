@@ -9,6 +9,13 @@ const AlunoHome = lazy(() => import('./pages/Aluno/Home'))
 const ExecucaoTreino = lazy(() => import('./pages/Aluno/ExecucaoTreino'))
 const Offline = lazy(() => import('./pages/Offline'))
 
+/**
+ * The main Application component.
+ * Sets up routing, code splitting (lazy loading), and protected routes.
+ * Handles the high-level layout and navigation logic.
+ *
+ * @returns The root React component for the app.
+ */
 function App() {
   return (
     <BrowserRouter>
@@ -36,4 +43,3 @@ function App() {
 }
 
 export default App
-

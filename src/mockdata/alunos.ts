@@ -1,5 +1,9 @@
 import { Aluno } from '../types'
 
+/**
+ * Mock data for students (Alunos).
+ * Used to simulate database records for development and testing.
+ */
 export const mockAlunos: Aluno[] = [
   {
     id: 'aluno-1',
@@ -32,4 +36,3 @@ export const mockAlunos: Aluno[] = [
     createdAt: '2024-02-01T10:00:00Z',
   },
 ]
-

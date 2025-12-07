@@ -2,14 +2,29 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { ReactNode } from 'react'
 
+/**
+ * Props for the Modal component.
+ */
 interface ModalProps {
+  /** Whether the modal is currently open. */
   isOpen: boolean
+  /** Optional handler to close the modal (e.g., when clicking backdrop or close button). */
   onClose?: () => void
+  /** Optional title to display in the modal header. */
   title?: string
+  /** The content to display inside the modal body. */
   children: ReactNode
+  /** Optional content to display in the modal footer. */
   footer?: ReactNode
 }
 
+/**
+ * A reusable modal component with brutalist styling and animations.
+ * Includes a backdrop, header, content area, and optional footer.
+ *
+ * @param props - The properties for the modal.
+ * @returns A modal portal (conditionally rendered via AnimatePresence).
+ */
 export default function Modal({
   isOpen,
   onClose,
@@ -77,4 +92,3 @@ export default function Modal({
     </AnimatePresence>
   )
 }
-

@@ -3,6 +3,13 @@ import { useAuthStore } from '../store/authStore'
 import { motion } from 'framer-motion'
 import { Button } from '../components/common'
 
+/**
+ * The Login page component.
+ * Allows users to choose between 'Personal Trainer' and 'Student' roles to access the application.
+ * Currently simulates authentication by setting the user type in the store.
+ *
+ * @returns The rendered login page.
+ */
 export default function Login() {
   const navigate = useNavigate()
   const { login } = useAuthStore()
@@ -74,4 +81,3 @@ export default function Login() {
     </div>
   )
 }
-

@@ -1,14 +1,30 @@
 import { ReactNode } from 'react'
 
+/**
+ * Props for the Card component.
+ */
 interface CardProps {
+  /** The content to display inside the card. */
   children: ReactNode
+  /** Additional CSS classes to apply to the card container. */
   className?: string
+  /** The padding size inside the card. Defaults to 'md'. */
   padding?: 'sm' | 'md' | 'lg'
+  /** The thickness of the border. Defaults to 'normal'. */
   border?: 'normal' | 'thick'
+  /** Optional click handler for the card. */
   onClick?: () => void
+  /** Optional inline styles. */
   style?: React.CSSProperties
 }
 
+/**
+ * A reusable card component with brutalist styling.
+ * Used as a container for content.
+ *
+ * @param props - The properties for the card.
+ * @returns A styled div element.
+ */
 export default function Card({
   children,
   className = '',
@@ -38,4 +54,3 @@ export default function Card({
     </div>
   )
 }
-

@@ -1,16 +1,33 @@
 import { ReactNode } from 'react'
 import Card from './Card'
 
+/**
+ * Props for the ProgressCard component.
+ */
 interface ProgressCardProps {
+  /** The title of the progress card. */
   title: string
-  progress: number // 0-100
+  /** The percentage of completion (0-100). */
+  progress: number
+  /** The current value/count (e.g., exercises completed). */
   current: number
+  /** The total value/count (e.g., total exercises). */
   total: number
+  /** The label for the countable items (e.g., "Exercícios"). */
   label: string
+  /** Optional icon to display in the header. */
   icon?: ReactNode
+  /** Additional CSS classes. */
   className?: string
 }
 
+/**
+ * A card component that displays a progress bar and stats.
+ * Used for showing completion status of workouts or goals.
+ *
+ * @param props - The properties for the progress card.
+ * @returns A Card component containing the progress visualization.
+ */
 export default function ProgressCard({
   title,
   progress,
@@ -46,4 +63,3 @@ export default function ProgressCard({
     </Card>
   )
 }
-
