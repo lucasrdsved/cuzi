@@ -1,5 +1,9 @@
 import { Aluno } from '../types'
 
+/**
+ * Mock data for students (Alunos).
+ * Contains a list of sample students associated with personal trainers.
+ */
 export const mockAlunos: Aluno[] = [
   {
     id: 'aluno-1',
@@ -32,4 +36,3 @@ export const mockAlunos: Aluno[] = [
     createdAt: '2024-02-01T10:00:00Z',
   },
 ]
-

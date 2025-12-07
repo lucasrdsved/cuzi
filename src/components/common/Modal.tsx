@@ -2,14 +2,28 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { ReactNode } from 'react'
 
+/**
+ * Props for the Modal component.
+ */
 interface ModalProps {
+  /** Whether the modal is currently open. */
   isOpen: boolean
+  /** Function to call when the modal should be closed (e.g., clicking backdrop or close button). */
   onClose?: () => void
+  /** Optional title to display in the modal header. */
   title?: string
+  /** The content to display inside the modal body. */
   children: ReactNode
+  /** Optional content to display in the modal footer. */
   footer?: ReactNode
 }
 
+/**
+ * A modal dialog component with backdrop and animations.
+ *
+ * @param props - The properties for the modal.
+ * @returns A portal containing the modal and backdrop, or null if not open.
+ */
 export default function Modal({
   isOpen,
   onClose,
@@ -77,4 +91,3 @@ export default function Modal({
     </AnimatePresence>
   )
 }
-

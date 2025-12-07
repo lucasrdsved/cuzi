@@ -6,6 +6,13 @@ import { getAlunosByPersonal, getTreinosByPersonal } from '../../services/mockSe
 import { Aluno, Treino } from '../../types'
 import { Users, Plus, TrendingUp, MessageSquare } from 'lucide-react'
 
+/**
+ * Personal Trainer Dashboard component.
+ * Displays statistics, list of students, and recent workouts.
+ * Provides quick actions to create new students and workouts.
+ *
+ * @returns The Personal Dashboard page UI.
+ */
 export default function PersonalDashboard() {
   const { user, logout } = useAuthStore()
   const navigate = useNavigate()

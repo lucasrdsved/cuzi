@@ -3,10 +3,21 @@ import { useAuthStore } from '../store/authStore'
 import { motion } from 'framer-motion'
 import { Button } from '../components/common'
 
+/**
+ * Login page component.
+ * Allows users to choose between 'Personal Trainer' and 'Aluno' roles to log in.
+ * Uses mock authentication via `authStore`.
+ *
+ * @returns The Login page UI.
+ */
 export default function Login() {
   const navigate = useNavigate()
   const { login } = useAuthStore()
 
+  /**
+   * Handles user login selection.
+   * @param type - The type of user logging in ('personal' or 'aluno').
+   */
   const handleLogin = (type: 'personal' | 'aluno') => {
     login(type)
     navigate(`/${type}`)
@@ -74,4 +85,3 @@ export default function Login() {
     </div>
   )
 }
-

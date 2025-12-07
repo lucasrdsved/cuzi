@@ -1,17 +1,33 @@
 import { Component, ReactNode } from 'react'
 import { Button } from './index'
 
+/**
+ * Props for the ErrorBoundary component.
+ */
 interface Props {
+  /** The child components to wrap and monitor for errors. */
   children: ReactNode
 }
 
+/**
+ * State for the ErrorBoundary component.
+ */
 interface State {
+  /** Whether an error has been caught. */
   hasError: boolean
 }
 
+/**
+ * A class component that catches JavaScript errors anywhere in their child component tree,
+ * logs those errors, and displays a fallback UI instead of the component tree that crashed.
+ */
 export default class ErrorBoundary extends Component<Props, State> {
   override state = { hasError: false }
 
+  /**
+   * Updates the state when an error is thrown in a descendant component.
+   * @returns The new state with hasError set to true.
+   */
   static getDerivedStateFromError() {
     return { hasError: true }
   }

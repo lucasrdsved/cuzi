@@ -1,5 +1,9 @@
 import { User } from '../types'
 
+/**
+ * Mock data for system users.
+ * Contains sample user profiles for personal trainers and students.
+ */
 export const mockUsers: User[] = [
   {
     id: 'personal-1',

@@ -6,6 +6,12 @@ import { Treino, ExecucaoExercicio } from '../../types'
 import { Check, ArrowLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+/**
+ * Component for executing a workout routine.
+ * Guides the student through exercises, sets, and rest timers.
+ *
+ * @returns The ExecucaoTreino page UI.
+ */
 export default function ExecucaoTreino() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
@@ -66,6 +72,10 @@ export default function ExecucaoTreino() {
     cargaUsada: exercicio.carga,
   }
 
+  /**
+   * Handles the completion of a set.
+   * Updates progress, triggers rest timer, or moves to next exercise/finish.
+   */
   const handleSerieCompleta = () => {
     const novasExecucoes: Record<string, ExecucaoExercicio> = {
       ...execucoes,
@@ -98,11 +108,19 @@ export default function ExecucaoTreino() {
     }
   }
 
+  /**
+   * Skips the current rest timer.
+   */
   const pularDescanso = () => {
     setDescansoAtivo(false)
     setTempoDescanso(0)
   }
 
+  /**
+   * Formats seconds into MM:SS format.
+   * @param segundos - The time in seconds.
+   * @returns Formatted time string.
+   */
   const formatarTempo = (segundos: number) => {
     const mins = Math.floor(segundos / 60)
     const secs = segundos % 60
@@ -261,4 +279,3 @@ export default function ExecucaoTreino() {
     </div>
   )
 }
-
