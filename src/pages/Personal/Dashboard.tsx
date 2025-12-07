@@ -27,7 +27,7 @@ export default function PersonalDashboard() {
   const treinosAtivos = treinos.filter(t => t.ativo).length
   const treinosHoje = treinos.filter(t => {
     const hoje = new Date().toISOString().split('T')[0]
-    return t.dataAtribuicao?.startsWith(hoje)
+    return t.dataAtribuicao?.startsWith(hoje || '')
   }).length
 
   if (loading) {

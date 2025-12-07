@@ -1,6 +1,11 @@
 # Melhorias Recomendadas - Personal & Aluno PWA
 
-Baseado em documentação oficial e melhores práticas de 2024.
+> [!IMPORTANT]
+> **UPGRADE COMPLETE (Dec 2025)**
+> This document is now **superseded** by the major upgrade to React 19, Vite 7, and Tailwind 4 performed on Dec 7, 2025.
+> Refer to `walkthrough.md` for the current state.
+
+Baseado em documentação oficial e melhores práticas de 2024 (LEGADO).
 
 ## 📊 Análise do Projeto Atual
 

@@ -51,6 +51,15 @@ export default function ExecucaoTreino() {
   }
 
   const exercicio = treino.exercicios[exercicioAtual]
+
+  if (!exercicio) {
+    return (
+      <div className="min-h-screen bg-brutal-white flex items-center justify-center">
+        <p className="text-2xl font-brutal">EXERCÍCIO NÃO ENCONTRADO</p>
+      </div>
+    )
+  }
+
   const execucaoAtual = execucoes[exercicio.id] || {
     exercicioId: exercicio.id,
     seriesCompletas: 0,
@@ -58,11 +67,12 @@ export default function ExecucaoTreino() {
   }
 
   const handleSerieCompleta = () => {
-    const novasExecucoes = {
+    const novasExecucoes: Record<string, ExecucaoExercicio> = {
       ...execucoes,
       [exercicio.id]: {
         ...execucaoAtual,
         seriesCompletas: execucaoAtual.seriesCompletas + 1,
+        cargaUsada: exercicio.carga || 0,
       },
     }
     setExecucoes(novasExecucoes)
@@ -226,9 +236,8 @@ export default function ExecucaoTreino() {
             {treino.exercicios.map((ex, index) => (
               <div
                 key={ex.id}
-                className={`flex items-center gap-4 p-3 border-brutal border-brutal-black ${
-                  index === exercicioAtual ? '' : ''
-                }`}
+                className={`flex items-center gap-4 p-3 border-brutal border-brutal-black ${index === exercicioAtual ? '' : ''
+                  }`}
                 style={index === exercicioAtual ? { backgroundColor: 'rgba(0, 255, 0, 0.1)' } : {}}
               >
                 <div className="w-8 h-8 border-brutal border-brutal-black flex items-center justify-center font-brutal">

@@ -12,7 +12,7 @@ export const mockTreinos: Treino[] = [
       {
         id: 'te-1',
         exercicioId: 'ex-2',
-        exercicio: mockExercicios[1],
+        exercicio: mockExercicios[1]!,
         series: 4,
         repeticoes: 10,
         carga: 60,
@@ -22,7 +22,7 @@ export const mockTreinos: Treino[] = [
       {
         id: 'te-2',
         exercicioId: 'ex-7',
-        exercicio: mockExercicios[6],
+        exercicio: mockExercicios[6]!,
         series: 3,
         repeticoes: 12,
         carga: 25,
@@ -44,7 +44,7 @@ export const mockTreinos: Treino[] = [
       {
         id: 'te-3',
         exercicioId: 'ex-1',
-        exercicio: mockExercicios[0],
+        exercicio: mockExercicios[0]!,
         series: 4,
         repeticoes: 12,
         carga: 0,
@@ -54,7 +54,7 @@ export const mockTreinos: Treino[] = [
       {
         id: 'te-4',
         exercicioId: 'ex-5',
-        exercicio: mockExercicios[4],
+        exercicio: mockExercicios[4]!,
         series: 3,
         repeticoes: 15,
         carga: 100,
@@ -76,7 +76,7 @@ export const mockTreinos: Treino[] = [
       {
         id: 'te-5',
         exercicioId: 'ex-8',
-        exercicio: mockExercicios[7],
+        exercicio: mockExercicios[7]!,
         series: 3,
         repeticoes: 20,
         carga: 0,

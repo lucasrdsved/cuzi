@@ -17,7 +17,7 @@ export default function AlunoHome() {
       const treinos = getTreinosByAluno(user.id)
       // Pegar o treino mais recente como treino do dia
       const treino = treinos.length > 0 ? treinos[0] : null
-      setTreinoDoDia(treino)
+      setTreinoDoDia(treino ?? null)
       setLoading(false)
     }
   }, [user])
