@@ -250,8 +250,14 @@ export const getEstatisticasPersonal = (personalId: string) => {
     totalTreinos: treinos.length,
     treinosAtivos: treinos.filter(t => t.ativo).length,
     totalExecucoes: execucoes.length,
-    execucoesHoje: execucoes.filter(e => 
-      e.dataExecucao.startsWith(new Date().toISOString().split('T')[0]!)
-    ).length
+    execucoesHoje: (() => {
+      const today = new Date()
+      return execucoes.filter(e => {
+        const execDate = new Date(e.dataExecucao)
+        return today.getDate() === execDate.getDate() &&
+          today.getMonth() === execDate.getMonth() &&
+          today.getFullYear() === execDate.getFullYear()
+      }).length
+    })()
   }
 }
