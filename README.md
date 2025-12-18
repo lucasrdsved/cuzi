@@ -20,11 +20,11 @@ A complete and modern Progressive Web App (PWA) connecting Personal Trainers and
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React 18, TypeScript, Vite
+- **Frontend**: React 19, TypeScript, Vite 7
 - **Styling**: Tailwind CSS (custom brutalist theme)
 - **State Management**: Zustand
 - **Animations**: Framer Motion
-- **Routing**: React Router v6
+- **Routing**: React Router v7
 - **Icons**: Lucide React
 - **PWA**: vite-plugin-pwa
 

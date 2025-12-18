@@ -1,35 +1,142 @@
+# Copilot Instructions — Personal & Aluno (cuzi)
+
+PWA fitness app connecting **Personal Trainers** and **Students (Alunos)**. Built with React 19 + Vite 7 + TypeScript + Tailwind 4 + Zustand + React Router 7.
+
+## Architecture Overview
+
+```
+src/
+├── components/common/   # Reusable UI (Button, Card, Modal, Input, ProgressCard)
+├── pages/               # Route components (lazy-loaded)
+│   ├── Aluno/           # Student views (Home, ExecucaoTreino)
+│   └── Personal/        # Trainer views (Dashboard)
+├── store/               # Zustand state (authStore.ts)
+├── services/            # Data layer (mockService.ts → future Supabase)
+├── mockdata/            # Static test data (alunos, treinos, exercicios, etc.)
+└── types/               # TypeScript domain types (index.ts)
+```
+
+### Data Flow
+1. **Auth**: `useAuthStore()` holds mock user with `UserType: 'personal' | 'aluno'`
+2. **Routing**: `ProtectedRoute` guards `/personal/*` and `/aluno/*` by role
+3. **Data**: `mockService.ts` simulates API (keep signatures for Supabase Phase 2)
+
+## Essential Patterns
+
+### Brutalist Design System (tailwind.config.js)
+```tsx
+// Colors: brutal-black, brutal-white, brutal-green, brutal-orange, brutal-red, brutal-cyan, brutal-fuchsia
+// Borders: border-brutal (6px), border-brutal-thick (8px)
+// Shadows: shadow-brutal (8px offset), shadow-brutal-hover (12px offset)
+// Font: font-brutal (Inter, weight 900)
+// Radius: brutal (0px), brutal-sm (4px)
+```
+
+### Component Pattern (see Button.tsx)
+```tsx
+import { motion } from 'framer-motion'
+
+interface MyComponentProps {
+  /** JSDoc all props */
+  children: ReactNode
+}
+
+export default function MyComponent({ children }: MyComponentProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, ease: 'linear' }}
+      className="border-brutal-thick border-brutal-black bg-brutal-white font-brutal uppercase"
+    >
+      {children}
+    </motion.div>
+  )
+}
+```
+
+### Animation Standards
+- Use Framer Motion `motion.*` primitives
+- **Linear easing** with short durations (0.2-0.3s)
+- Subtle scale interactions: `whileHover={{ scale: 1.02 }}`, `whileTap={{ scale: 0.98 }}`
+
+## Code Rules (Strict)
+
+| Rule | Details |
+|------|---------|
+| TypeScript | Avoid `any` (use `unknown`). Run `npm run type-check` before PRs |
+| Path Aliases | Use `@/`, `@components/`, `@pages/`, `@store/`, `@services/`, `@types/` |
+| Components | Functional only, props typed, JSDoc all exports |
+| Barrel Exports | Use `index.ts` pattern (see `components/common/index.ts`) |
+| Styling | **Tailwind only**, use `brutal-*` tokens. No CSS files |
+| Forms | React Hook Form + Zod for validation |
+| Lazy Loading | All pages via `React.lazy()` with `<Suspense fallback={<Loading/>}>` |
+
+### Domain Types (src/types/index.ts)
+
+| Type | Description |
+|------|-------------|
+| `User` / `UserType` | Auth user ('personal' \| 'aluno') |
+| `Aluno` | Student profile with `objetivo`, `restricoes` |
+| `Treino` / `TreinoExercicio` | Workout + exercises (series, repeticoes, descanso) |
+| `ExecucaoTreino` / `ExecucaoExercicio` | Completed workout session |
+| `Exercicio` | Exercise catalog (grupoMuscular, dificuldade) |
+| `Mensagem` | Chat message between users |
+| `Medida` | Physical measurements |
+
+## Development Commands
+
+```bash
+npm run dev          # Start dev server (localhost:5173)
+npm run build        # TypeScript check + Vite build
+npm run preview      # Preview production build
+npm run type-check   # tsc --noEmit
 npm run lint:fix     # ESLint auto-fix
-# Personal & Aluno PWA — AI Agent Guide
+```
 
-**Context**: React 19 + Vite 7 + TS + Tailwind 4 + Zustand + React Router 7. Phase 1 = frontend with mock data; Phase 2 will swap mockService for Supabase (keep signatures stable).
+## PWA Configuration
 
-**Architecture**
-- Dual roles share the app; routes in `src/App.tsx` guarded by `ProtectedRoute` and `useAuthStore` (mock login, sets role/user). Personal: `/personal/*`; Aluno: `/aluno/*`.
-- Data is mock-only: always fetch via `src/services/mockService.ts` (wraps `src/mockdata/*.ts`). No hardcoded data in components.
-- Types live in `src/types/index.ts` (`User`→`Aluno`, `Treino`→`TreinoExercicio`→`Exercicio`, `ExecucaoTreino` with `ExecucaoExercicio`). Keep payloads aligned with these shapes.
+Managed by `vite-plugin-pwa` in `vite.config.ts`. **Do NOT hand-edit generated SW.**
 
-**Design System (brutalist, non-negotiable)**
-- Colors only: brutal-black/white/green/orange/red from `tailwind.config.js`; black borders 6–8px (`border-brutal`, `border-brutal-thick`), radius 0–4px (`brutal`, `brutal-sm`), font weight 900 uppercase, shadows `shadow-brutal`, animations linear only.
-- Example: `src/components/common/Button.tsx` shows variant classes and linear Framer Motion hover/tap. Reuse patterns; avoid gradients, soft shadows, big radii, easing curves.
+- **Caching**: API (NetworkFirst), images/fonts (CacheFirst)
+- **Offline**: Fallback page at `/offline`
+- **Testing**: `npm run build && npm run preview` → DevTools → Application → Service Workers
 
-**State & Navigation**
-- Global auth: `useAuthStore` (Zustand) mock user by role; logout clears both user and role.
-- Routes are lazy-loaded with `<Suspense fallback={<Loading />}>` in `App.tsx`; keep new pages lazy.
+## Deploy
 
-**Workflow & Commands**
-- Dev: `npm run dev`; Build: `npm run build`; Type check: `npm run type-check`; Lint fix: `npm run lint:fix`.
-- PWA check: `npm run build && npm run preview`, then DevTools → Application → Service Workers. Do not hand-edit service workers (managed by `vite-plugin-pwa` in `vite.config.ts`).
+**Vercel only** (CLI or web UI). See `vercel.json`. **Do NOT add GitHub Actions for deploy.**
 
-**Component/Data Patterns**
-- New UI: place shared in `src/components/common/`, role-specific in `src/components/personal|aluno/`, export via barrel (`common/index.ts`), keep brutalist styling.
-- Mock data extension: add types first, then mock arrays in `src/mockdata/{entity}.ts`, expose through `mockService` with same signatures you’ll need for Supabase later.
-- Forms: React Hook Form + Zod; Animations: Framer Motion with `ease: 'linear'` and small scale hover/tap.
+## Adding New Features
 
-**Key Files**
-- `src/App.tsx`, `src/store/authStore.ts`, `src/services/mockService.ts`, `src/types/index.ts`, `tailwind.config.js`, `vite.config.ts`, `.cursorrules` (legacy but still relevant).
+### New Mock Endpoint
+1. Add types to `src/types/index.ts`
+2. Add mock data to `src/mockdata/{entity}.ts`
+3. Export wrapper function in `src/services/mockService.ts` with proper return type
 
-**Hard Rules / Don’ts**
-- No CSS files (Tailwind only); no gradients/soft shadows/rounded >4px; no manual SW; no GitHub Actions deploy (use Vercel CLI); no `any`; no hardcoded data.
+### New Component
+1. Create in `src/components/common/` with JSDoc
+2. Export from `src/components/common/index.ts`
+3. Use brutalist tokens and Framer Motion
 
-**Phase 2 Heads-up**
-- Swap `mockService` for Supabase keeping function signatures; replace mock auth with Supabase Auth; chat/messages should move to Supabase Realtime; plan offline/IndexedDB then.
+### New Page
+1. Create in `src/pages/{Role}/` (Aluno or Personal)
+2. Add lazy import in `src/App.tsx`
+3. Wrap route with `ProtectedRoute` for role-based access
+
+## Key Files Reference
+
+| File | Purpose |
+|------|---------|
+| `src/services/mockService.ts` | All data access (Phase 1 mock) |
+| `src/store/authStore.ts` | Mock auth with `login(type)` / `logout()` |
+| `src/App.tsx` | Routes + ProtectedRoute configuration |
+| `src/components/common/Button.tsx` | Reference component pattern |
+| `tailwind.config.js` | Brutalist design tokens |
+| `vite.config.ts` | PWA, path aliases, build optimization |
+| `tsconfig.json` | Strict TypeScript with path aliases |
+
+## Future: Supabase Migration (Phase 2)
+
+`mockService.ts` function signatures are designed to match Supabase patterns:
+- `getAlunosByPersonal(personalId)` → `supabase.from('alunos').select().eq('personalId', id)`
+- Replace mock imports with `@supabase/supabase-js` client
